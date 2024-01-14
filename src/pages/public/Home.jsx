@@ -1,9 +1,7 @@
+import Slider from '../../components/Slider'
+
 const Home = () => {
-  return (
-    <div>
-      Home <h1>Raju</h1> <h2>Tamang</h2>
-    </div>
-  )
+  return <Slider />
 }
 
 export default Home
