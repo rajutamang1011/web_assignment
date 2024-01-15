@@ -1,9 +1,14 @@
 @use '../scss/globals/' as *;
+@use '../scss/util/breakpoints' as *;
 
 .headerWrapper {
   position: fixed;
   width: 100%;
   border-bottom: 1px solid white;
+  @include breakpoint-down('medium') {
+    padding: 20px 0;
+  }
+
   &.white {
     background-color: white;
     .navMenu {
@@ -13,6 +18,7 @@
         }
       }
     }
+
     button {
       color: #000;
     }
@@ -84,7 +90,7 @@
     width: 100%;
     flex-direction: row;
     white-space: nowrap;
-    min-width: 485px;
+    min-width: 510px;
     &::before {
       position: fixed;
       content: '';
