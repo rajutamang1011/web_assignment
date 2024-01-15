@@ -9,7 +9,7 @@ const navigationItems = [
     label: 'Brand Story',
     link: '/',
     dropdownItems: [
-      { label: 'Introduction to the clip', link: '/products/category1' },
+      { label: 'Introduction to THE CLIP', link: '/products/category1' },
       { label: 'Product Category 2', link: '/products/category2' },
     ],
   },
@@ -42,6 +42,7 @@ const navigationItems = [
 
 const Header = () => {
   const [openDropdown, setOpenDropdown] = useState(null)
+  const [isHover, setIsHover] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
   const onClick = () => {
@@ -49,38 +50,53 @@ const Header = () => {
   }
   const handleMouseEnter = (index) => {
     setOpenDropdown(index)
+    setIsHover(true)
   }
 
   const handleMouseLeave = () => {
     setOpenDropdown(null)
+    setIsHover(false)
   }
 
   return (
-    <header className={styles.headerWrapper}>
+    <header
+      className={`${styles.headerWrapper} ${
+        isHover || isOpen ? styles.white : ''
+      }`}
+    >
       <nav className={styles.mainNav}>
-        <Link to="/" className="text-3xl font-semibold text-primary">
-          <img src="/images/logo.png" alt="logo" />
+        <Link to="/" className={styles.logo}>
+          <img
+            src={isOpen || isHover ? '/images/logo_b.png' : '/images/logo.png'}
+            alt="logo"
+          />
         </Link>
         <ul className={styles.navMenu}>
           {navigationItems.map((item, index) => (
             <li
+              className={styles.menuitem}
               key={index}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <a href={item.link}>{item.label}</a>
+              <NavLink
+                to={item.link}
+                className={`${styles.item} ${
+                  openDropdown === index ? styles.line : ''
+                }`}
+              >
+                {item.label}
+              </NavLink>
               {item.dropdownItems && openDropdown === index && (
-                <div className={styles.submenu}>
-                  <ul className={styles.dropdown_menu}>
-                    {item.dropdownItems.map((dropdownItem, index) => (
-                      <li key={index}>
-                        <NavLink to={dropdownItem.link}>
-                          {dropdownItem.label}{' '}
-                        </NavLink>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className={styles.dropdown_menu}>
+                  {item.dropdownItems.map((dropdownItem, index) => (
+                    <li key={index}>
+                      <NavLink to={dropdownItem.link}>
+                        {dropdownItem.label}
+                      </NavLink>
+                    </li>
+                  ))}
+                </ul>
               )}
             </li>
           ))}

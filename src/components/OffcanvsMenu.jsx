@@ -6,7 +6,7 @@ const OffcanvsMenu = ({ navigationItems }) => {
       <div className="container">
         <ul className={styles.row}>
           {navigationItems.map((item, index) => (
-            <li key={index}>
+            <li className={styles.itemsBox} key={index}>
               <h2>
                 <a href={item.link}>{item.label}</a>
               </h2>

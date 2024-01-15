@@ -1,31 +1,31 @@
 @use '../util/' as u;
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
-  gap: u.rem(40);
-  max-width: min(100% - u.rem(40), u.rem(1000));
-  margin-inline: auto;
+// .grid {
+//   display: grid;
+//   grid-template-columns: 1fr;
+//   grid-template-rows: auto auto;
+//   gap: u.rem(40);
+//   max-width: min(100% - u.rem(40), u.rem(1000));
+//   margin-inline: auto;
 
-  @include u.breakpoint(large) {
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto;
-  }
+//   @include u.breakpoint(large) {
+//     grid-template-columns: 2fr 1fr;
+//     grid-template-rows: auto;
+//   }
 
-  &__main,
-  &__sidebar {
-    padding: u.rem(40);
-  }
+// &__main,
+// &__sidebar {
+//   padding: u.rem(40);
+// }
 
-  &__main {
-    background-color: blue;
-  }
+// &__main {
+//   background-color: blue;
+// }
 
-  &__sidebar {
-    background-color: green;
-    @include u.breakpoint-down(medium) {
-      text-align: center;
-    }
-  }
-}
+// &__sidebar {
+//   background-color: green;
+//   @include u.breakpoint-down(medium) {
+//     text-align: center;
+//   }
+// }
+// }
