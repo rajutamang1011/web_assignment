@@ -69,8 +69,8 @@ const Header = () => {
           <img
             src={
               isOpen || isHover || scrolled
-                ? '/images/logo_b.png'
-                : '/images/logo.png'
+                ? 'web_assignment/images/logo_b.png'
+                : 'web_assignment/images/logo.png'
             }
             alt="logo"
           />

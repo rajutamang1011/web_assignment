@@ -42,7 +42,7 @@ const HeroSection = () => {
           </div>
           <div className={`${styles.flex_col} ${styles.right}`}>
             <div className={styles.circle}></div>
-            <img src="images/hero.png" alt="hero_image" />
+            <img src="web_assignment/images/hero.png" alt="hero_image" />
           </div>
         </div>
       </div>

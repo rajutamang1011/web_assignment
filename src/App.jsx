@@ -7,7 +7,7 @@ function App() {
     <>
       <Routes>
         {/* public  */}
-        <Route path="/" element={<PublicLayouts />}>
+        <Route path="/web_assignment" element={<PublicLayouts />}>
           <Route index element={<Home />} />
         </Route>
       </Routes>

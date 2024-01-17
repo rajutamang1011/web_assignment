@@ -1,7 +1,7 @@
 export const navigationItems = [
   {
     label: 'Brand Story',
-    link: '/',
+    link: '/web_assignment',
     dropdownItems: [
       { label: 'Introduction to THE CLIP', link: '/products/category1' },
       { label: 'Product Category 2', link: '/products/category2' },
