@@ -1,25 +1,10 @@
 import { useEffect, useState } from 'react'
+import { FaPause, FaPlay } from 'react-icons/fa'
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 
-const slides = [
-  {
-    image: 'images/slider/slider_1.jpg',
-    title: 'Title 1',
-    text: 'Some short text for slide 1',
-  },
-  {
-    image: 'images/slider/slider_2.jpg',
-    title: 'Title 2',
-    text: 'Some short text for slide 2',
-  },
-  {
-    image: 'images/slider/slider_1.jpg',
-    title: 'Title 2',
-    text: 'Some short text for slide 2',
-  },
-  // Add more slide objects here
-]
+import styles from './slider.module.scss'
 
-const Slider = () => {
+const Slider = ({ slides }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [autoplay, setAutoplay] = useState(true)
 
@@ -29,7 +14,7 @@ const Slider = () => {
     const startAutoplay = () => {
       return setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % slides.length)
-      }, 8000)
+      }, 6000)
     }
 
     if (autoplay) {
@@ -39,7 +24,7 @@ const Slider = () => {
     return () => {
       clearInterval(intervalId)
     }
-  }, [autoplay])
+  }, [autoplay, slides.length])
 
   const handlePreviousClick = () => {
     setCurrentIndex((prev) => (prev - 1 + slides.length) % slides.length)
@@ -57,38 +42,56 @@ const Slider = () => {
     return slides.map((_, index) => (
       <button
         key={index}
-        className={`dot ${index === currentIndex ? 'active' : ''}`}
+        className={`${styles.dotCircle} ${
+          index === currentIndex ? styles.active : ''
+        }`}
         onClick={() => setCurrentIndex(index)}
-      />
+      >
+        <div className={styles.dot}></div>
+      </button>
     ))
   }
 
   return (
-    <div className="slider">
-      <div className="slide-container">
+    <div className={styles.slider}>
+      <div className={styles.slide_container}>
         {slides.map((slide, index) => (
           <div
             key={index}
-            className={`slide ${index === currentIndex ? 'active' : ''}`}
+            className={`${styles.slide} ${
+              index === currentIndex ? styles.active : ''
+            }`}
           >
-            <img src={slide.image} alt={slide.title} className="slide-image" />
-            <div className="slide-content">
-              <h2>{slide.title}</h2>
-              <p>{slide.text}</p>
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className={styles.slide_image}
+            />
+            <div className={styles.slide_content}>
+              <div className="container">
+                <h2>
+                  <span>{slide.title}</span>
+                </h2>
+                <p>{slide.text}</p>
+              </div>
             </div>
           </div>
         ))}
       </div>
-
-      <div className="controls">
-        <button onClick={handlePreviousClick}>Previous</button>
-        <button onClick={handleAutoplayToggle}>
-          {autoplay ? 'Pause Autoplay' : 'Start Autoplay'}
-        </button>
-        <button onClick={handleNextClick}>Next</button>
+      <div className={styles.controlsWrap}>
+        <div className={styles.navigation}>{renderNavigationDots()}</div>
+        <div className={styles.controls}>
+          <button onClick={handleAutoplayToggle} className={styles.play_pause}>
+            {autoplay ? <FaPause /> : <FaPlay />}
+          </button>
+          <button className={styles.arrow} onClick={handlePreviousClick}>
+            <MdKeyboardArrowLeft />
+          </button>
+          <button className={styles.arrow} onClick={handleNextClick}>
+            <MdKeyboardArrowRight />
+          </button>
+        </div>
       </div>
-
-      <div className="navigation">{renderNavigationDots()}</div>
     </div>
   )
 }
