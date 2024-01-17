@@ -109,7 +109,7 @@ const Header = () => {
         )}
 
         <button className={styles.menu_toggle} onClick={onClick}>
-          {isOpen ? <IoClose /> : <FaBars />}
+          {isOpen ? <IoClose className={styles.close} /> : <FaBars />}
         </button>
       </nav>
 

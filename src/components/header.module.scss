@@ -30,6 +30,19 @@
     border: 0;
     font-size: 32px;
     cursor: pointer;
+    min-width: 45px;
+    min-height: 45px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .close {
+    font-size: 45px;
+    margin-right: 10px;
+    @include breakpoint-down('medium') {
+      font-size: 40px;
+      margin-right: 0;
+    }
   }
 }
 .mainNav {
@@ -51,7 +64,7 @@
     flex-direction: column;
     a {
       color: white;
-      font-size: 19px;
+      font-size: 20px;
       font-weight: 500;
     }
   }
@@ -59,7 +72,7 @@
 
 .menuitem {
   position: relative;
-  padding: 0 20px;
+  padding: 0 28px;
   &:last-child {
     .dropdown_menu {
       right: 0;
