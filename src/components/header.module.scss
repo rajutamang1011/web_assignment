@@ -5,6 +5,7 @@
   position: fixed;
   width: 100%;
   border-bottom: 1px solid white;
+  z-index: 1;
   @include breakpoint-down('medium') {
     padding: 20px 0;
   }
@@ -28,6 +29,7 @@
     color: #fff;
     border: 0;
     font-size: 32px;
+    cursor: pointer;
   }
 }
 .mainNav {
