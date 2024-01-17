@@ -1,3 +1,4 @@
+import HeroSection from '../../components/HeroSection'
 import Slider from '../../components/Slider'
 
 const slides = [
@@ -22,6 +23,7 @@ const Home = () => {
   return (
     <>
       <Slider slides={slides} />
+      <HeroSection />
     </>
   )
 }
